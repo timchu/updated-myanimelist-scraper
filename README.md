@@ -8,13 +8,15 @@ To run, type in the terminal:
 
 and follow the prompts.
 
-Example:
+*Example:*
 
-Enter a first anime
-> my hero academia
+python scraper.py
+
+> Enter a first anime
+> > my hero academia
 > 
-Enter a second anime
-> attack on titan
+> Enter a second anime
+> > attack on titan
 
 Output:
 > All Might and Mike Zacharias  have the same voice! ( Miyake, Kenta )

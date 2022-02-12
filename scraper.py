@@ -103,17 +103,20 @@ def show_character_overlaps(va_char_dict1, va_char_dict2):
 
 
 
-print( "This code takes as input two animes, searches on MyAnimeList for them, and figures out which characters across shows have the same (Japanese) voice.")
-print("\n Note: this code is slow by design (90 seconds to run). This prevents MyAnimeList from blocking the code.\n")
+#print( "This code takes as input two animes, searches on MyAnimeList for them, and figures out which characters across shows have the same (Japanese) voice.")
+#print("\n Note: this code is slow by design (90 seconds to run). This prevents MyAnimeList from blocking the code.\n")
 
 print("Enter a first anime")
 a1 = input()
 print("Enter a second anime")
 a2 = input()
+println()
+
 print("Getting VAs for", a1)
 s1 = va_char_dict_by_anime_name(a1)
 print("Getting VAs for", a2)
 s2 = va_char_dict_by_anime_name(a2)
 
+println()
 print("Characters with the same voice:")
 show_character_overlaps(s1, s2)

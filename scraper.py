@@ -96,7 +96,7 @@ def show_character_overlaps(va_char_dict1, va_char_dict2):
             overlaps.append((va, character1, character2))
             name1 = format_name(character1)
             name2 = format_name(character2)
-            print(name1, "and", name2, "have the same voice (", va, ")")
+            print(name1, "and", name2, "(voiced by", va, ")")
     if overlaps == []:
         print("There are no characters who share a voice!")
     return overlaps

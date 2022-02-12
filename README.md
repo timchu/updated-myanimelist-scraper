@@ -4,20 +4,25 @@ same actors.
 
 To run, type in the terminal:
 
-python scraper.py 
+> python scraper.py 
 
 and follow the prompts.
 
 Example:
 
 Enter a first anime
-my hero academia
+> my hero academia
+> 
 Enter a second anime
-attack on titan
+> attack on titan
 
 Output:
- All Might and Mike Zacharias  have the same voice! ( Miyake, Kenta )
- Female Reporter and Annie Leonhart  have the same voice! ( Shimamura, Yuu )
- Noumu and Keith Shadis  have the same voice! ( Mogami, Tsuguo )
- Fumikage Tokoyami  and  Reiner Braun  have the same voice! ( Hosoya, Yoshimasa )
- Momo Yaoyorozu  and  Armin Arlert  have the same voice! ( Inoue, Marina )
+> All Might and Mike Zacharias  have the same voice! ( Miyake, Kenta )
+> 
+> Female Reporter and Annie Leonhart  have the same voice! ( Shimamura, Yuu )
+> 
+> Noumu and Keith Shadis  have the same voice! ( Mogami, Tsuguo )
+> 
+> Fumikage Tokoyami  and  Reiner Braun  have the same voice! ( Hosoya, Yoshimasa )
+> 
+> Momo Yaoyorozu  and  Armin Arlert  have the same voice! ( Inoue, Marina )

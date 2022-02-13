@@ -16,8 +16,15 @@ Enter a second anime
 attack on titan
 
 Output:
- All Might and Mike Zacharias  have the same voice! ( Miyake, Kenta )
- Female Reporter and Annie Leonhart  have the same voice! ( Shimamura, Yuu )
- Noumu and Keith Shadis  have the same voice! ( Mogami, Tsuguo )
- Fumikage Tokoyami  and  Reiner Braun  have the same voice! ( Hosoya, Yoshimasa )
- Momo Yaoyorozu  and  Armin Arlert  have the same voice! ( Inoue, Marina )
+ Characters with the same voice:
+
+ Armin Arlert and Momo Yaoyorozu (voiced by Inoue, Marina )
+ Eren Yeager and Shouto Todoroki (voiced by Kaji, Yuuki )
+ Reiner Braun and Fumikage Tokoyami (voiced by Hosoya, Yoshimasa )
+ Instructor and Giant Villain (voiced by Murakami, Yuya )
+ Hitch Dreyse and Nemuri Kayama (voiced by Watanabe, Akeno )
+ Franz Kefka and Ken Ishiyama (voiced by Ookuma, Kenta )
+ Annie Leonhart and Female Reporter (voiced by Shimamura, Yuu )
+ Keith Shadis and Noumu (voiced by Mogami, Tsuguo )
+ Luke Siss and Kamui Wood (voiced by Kitada, Masamichi )
+ Mike Zacharias and All Might (voiced by Miyake, Kenta )

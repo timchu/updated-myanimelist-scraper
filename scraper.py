@@ -4,11 +4,6 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 import time
-   
-# print("Input an anime name")
-# anime_name = input()
-
-no_actor_string = "There is no actor!"
 
 def rate_limited_request(search_URL):
     time.sleep(0.5)

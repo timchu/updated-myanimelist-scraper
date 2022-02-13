@@ -11,7 +11,7 @@ import time
 no_actor_string = "There is no actor!"
 
 def rate_limited_request(search_URL):
-    time.sleep(1)
+    time.sleep(0.5)
     return requests.get(search_URL)
 
 def get_character_webpage(anime_name):
@@ -34,48 +34,32 @@ def get_character_webpage(anime_name):
     all_characters_url = anime_page_url + "/characters"
     return all_characters_url
 
-
-def get_japanese_voice_actor(character_url_page):
-    r = rate_limited_request(character_url_page)
-    soup = BeautifulSoup(r.content, 'html5lib')
-    actor_a_tags = soup.select("a[href*=https://myanimelist.net/people/]")[1::2]
-    # Looking for the Japanese actor
-    for actor_a_tag in actor_a_tags:
-        actor_a_parent = actor_a_tag.parent
-        language_td_tag = actor_a_parent.findChildren("div")[0]
-        language = language_td_tag.findChildren("small")[0].contents[0]
-        if language == "japanese" or language == "Japanese":
-            return actor_a_tag.contents[0]
-    return no_actor_string
+def remove_spaces(s):
+    q = s.replace(" ","")
+    return q.replace("\n","")
 
 # input is a dictionary of character:myanimelist_character_page_url
-def get_character_url_dict(all_characters_url):
+def get_va_character_dict(all_characters_url):
+    va_character_dict = {}
     r = rate_limited_request(all_characters_url)
     soup = BeautifulSoup(r.content, 'html5lib')
-    character_tags = soup.find_all("h3",{"class":"h3_character_name"})
-    character_name_and_url = {}
-    for ctag in character_tags:
-        character_name_and_url[ctag.contents[0]] = ctag.parent['href']
-    return(character_name_and_url)
+    character_tables = soup.find_all("table", {"class":"js-anime-character-table"})
+    """ Find the character, VA, and language. We filter for only Japanese"""
+    for table in character_tables:
+        character = table.findChildren("h3", {"class":"h3_character_name"})[0].contents[0]
+        va_table = table.findChildren("tr", {"class":"js-anime-character-va-lang"})
 
-def va_character_dict(char_page_url):
-    va_char_dict = {}
-    character_url_dict = get_character_url_dict(char_page_url)
-    #print("Char url dict")
-    #print(character_url_dict)
-    for character in character_url_dict:
-        url = character_url_dict[character]
-        va = get_japanese_voice_actor(url)
-        va_char_dict[va] = character
-    #print("va_char_dict")
-    #print(va_char_dict)
-    return va_char_dict
+        for va_table_element in va_table:
+            va = va_table_element.findChildren("a")[0].contents[0]
+            lang = va_table_element.findChildren("div", {"class":"spaceit_pad js-anime-character-language"})[0].contents[0]
+            lang = remove_spaces(lang)
+            if lang == "Japanese" or lang == "japanese":
+                va_character_dict[va]=character
+    return va_character_dict
 
 def va_char_dict_by_anime_name(anime_name):
     url = get_character_webpage(anime_name)
-    #print("URL")
-    #print(url)
-    return va_character_dict(url)
+    return get_va_character_dict(url)
 
 def format_name(name):
     if "," in name:
@@ -85,11 +69,7 @@ def format_name(name):
 
 def show_character_overlaps(va_char_dict1, va_char_dict2):
     overlaps = []
-    #print(va_char_dict1)
-    #print(va_char_dict2)
     for va in va_char_dict1:
-        if va == no_actor_string:
-            continue
         if va in va_char_dict2:
             character1 = va_char_dict1[va]
             character2 = va_char_dict2[va]
@@ -100,11 +80,6 @@ def show_character_overlaps(va_char_dict1, va_char_dict2):
     if overlaps == []:
         print("There are no characters who share a voice!")
     return overlaps
-
-
-
-#print( "This code takes as input two animes, searches on MyAnimeList for them, and figures out which characters across shows have the same (Japanese) voice.")
-#print("\n Note: this code is slow by design (90 seconds to run). This prevents MyAnimeList from blocking the code.\n")
 
 print("Enter a first anime")
 a1 = input()
